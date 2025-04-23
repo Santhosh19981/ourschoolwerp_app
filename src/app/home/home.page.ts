@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -24,6 +24,17 @@ export class HomePage {
     { label: 'Exam Timetable', icon: 'calendar-number' },
     { label: 'Time Table', icon: 'time' }
   ];
-  constructor() {}
 
+  constructor(private router: Router) {}
+
+
+
+  profileNavigate(){
+    debugger
+    this.router.navigate(['/profile']);
+  }
+  logout() {
+    localStorage.removeItem('isLoggedIn');
+    this.router.navigate(['/login']);
+  }
 }
