@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LangandparmisionService } from '../services/langandparmision.service';
+import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+  providers: [CallNumber],
   standalone: false,
 })
 export class HomePage {
@@ -36,7 +38,7 @@ export class HomePage {
   language: any;
   isLoading:boolean = false;
   constructor(private router: Router,
-    private langandparmisionService: LangandparmisionService,
+    private langandparmisionService: LangandparmisionService,private callNumber: CallNumber
   ) {}
 
   ngOnInit(){
@@ -54,13 +56,13 @@ export class HomePage {
   }
   profile(){
     this.isLoading =true;
-    this.langandparmisionService.getUserProfile().subscribe((data: any) => {
-     setTimeout(() => {
-      this.isLoading = false;
-     }, 1);
+    this.langandparmisionService.getUserProfile().subscribe((data: any) => {   
      
       if(data.status == true)
       {
+        setTimeout(() => {
+          this.isLoading = false;
+         }, 1);
         this.loginprofile = data.data
       }
        
@@ -89,4 +91,25 @@ export class HomePage {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+  gotoMenu(menu:any){
+    if(menu == 'Call to Teacher')
+      this.callTeacher();
+    else if(menu == 'Call to Principal')
+      this.callPrincipal();
+    else if(menu == 'Student Info')
+      this.profileNavigate();
+
+  }
+  callTeacher() {
+    this.callNumber.callNumber("8500814626", true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
+
+  callPrincipal() {
+    this.callNumber.callNumber("9908611834", true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
+
 }

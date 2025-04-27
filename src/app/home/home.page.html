@@ -87,7 +87,7 @@
       <!-- Menu Grid -->
       <div class="row g-3">
         <div *ngFor="let menu of studentMenu" class="col-4">
-          <div class="card shadow-sm border-0 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center p-2"  style="cursor: pointer;">
+          <div class="card shadow-sm border-0 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center p-2"  style="cursor: pointer;" (click)="gotoMenu(menu.title)">
             <ion-icon [name]="menu.icon" size="large" class="mb-2"></ion-icon>
             <p class="small fw-semibold text-center m-0 text-wrap" style="font-size: 13px;">{{ menu.title }}</p>
           </div>
