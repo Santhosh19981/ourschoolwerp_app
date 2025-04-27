@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>profile</ion-title>
   </ion-toolbar>
@@ -10,4 +10,142 @@
       <ion-title size="large">profile</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<div class="mobileScreen">
+  <div class="header">
+    <div class="col-md-12">
+        <div class="logo">
+            <img src="../../assets/images/logo.jpg" style="width:45px;" (click)="navigateHome()">
+        </div>
+        <div class="loins">
+          <div class="navigation">
+            <div class="user-box">
+              <div class="image-box">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxivAs4UknzmDfLBXGMxQkayiZDhR2ftB4jcIV7LEnIEStiUyMygioZnbLXCAND-I_xWQpVp0jv-dv9NVNbuKn4sNpXYtLIJk2-IOdWQNpC2Ldapnljifu0pnQqAWU848Ja4lT9ugQex-nwECEh3a96GXwiRXlnGEE6FFF_tKm66IGe3fzmLaVIoNL/s1600/img_avatar.png" alt="avatar">
+              </div>
+              <p class="username">D Poojitha</p>
+            </div>
+            <div class="menu-toggle"></div>
+            <ul class="menu">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Messages</a></li>
+              <li><a href="#">Notification</a></li>
+              <li><a href="#">Settings</a></li>
+          <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+        </div>
+    </div>
+</div>
+  
+  <section class="platters">
+    <div class="titleBar">
+      <h1>chaitanya bharathi School</h1>
+    </div>
+    <div class="platterBox">
+      <div class="platterHeader">
+        <div class="titleContainer">
+          <div class="iconContainer">
+            <img src="https://t3.ftcdn.net/jpg/03/39/60/22/360_F_339602256_dBq6bYfHWzlnRQkXgAMFXZfx2r1DPQns.jpg" alt="">
+          </div>
+          <div class="textContent">
+            <span class="title">{{loginprofile?.profile.name}}</span>
+            <span class="shortDescription">
+              {{loginprofile?.profile.registerNO}}
+            </span>
+          </div>
+        </div>
+        <i data-feather="heart" class="added"></i>
+      </div>
+      <!-- <div class="platterBody">
+        <div class="platterInfoBox">
+          <span class="label">Mobile Number</span>
+          <span class="value">{{loginprofile?.profile.phone}}</span>
+        </div>
+        <div class="platterInfoBox">
+          <span class="label">Roll Number</span>
+          <span class="value">123456</span>
+        </div>
+        <div class="platterInfoBox">
+          <span class="label">Class</span>
+          <span class="value">8 Stands</span>
+        </div>
+        <div class="platterInfoBox">
+          <span class="label">Section</span>
+          <span class="value">B</span>
+        </div>
+      </div> -->
+    </div>
+    <div class="card shadow-sm rounded-4">
+      <div class="card-body">
+        <h5 class="fw-bold mb-3">Personal Information</h5>
+        <table class="table table-bordered small">
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <td>:</td>
+              <td>{{loginprofile?.profile.name}}</td>
+            </tr>
+            <tr>
+              <th>Register NO</th>
+              <td>:</td>
+              <td>{{loginprofile?.profile.registerNO}}</td>
+            </tr>
+            <tr>
+              <th>Roll</th>
+              <td>:</td>
+              <td>{{loginprofile?.profile.roll}}</td>
+            </tr>
+            <tr>
+              <th>Class</th>
+              <td>:</td>
+              <td>{{loginprofile?.profile.srclasses}}</td>
+            </tr>
+            <tr>
+              <th>Section</th>
+              <td>:</td>
+              <td>{{loginprofile?.profile.srsection}}</td>
+            </tr>
+            <tr>
+              <th>Phone Number</th>
+              <td>:</td>
+              <td>{{loginprofile?.profile.phone}}</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>:</td>
+              <td>{{loginprofile?.profile.email}}</td>
+            </tr>
+            <tr>
+              <th>Gender</th>
+              <td>:</td>
+              <td>{{loginprofile?.profile.sex}}</td>
+            </tr>
+            <tr>
+              <th>Blood Group</th>
+              <td>:</td>
+              <td>{{loginprofile?.profile.bloodgroup}}</td>
+            </tr>
+            
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </section>
+ 
+
+  
+</div>
+<script>
+  let menuToggle = document.querySelector('.menu-toggle');
+let navigation = document.querySelector('.navigation');
+
+menuToggle.onclick = function() {
+  navigation.classList.toggle('active');
+}
+</script>
+
+<app-loader *ngIf="isLoading"></app-loader>

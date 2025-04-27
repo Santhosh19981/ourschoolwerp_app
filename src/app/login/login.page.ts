@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonHeader, IonContent, IonInput } from "@ionic/angular/standalone";
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AuthenticationService } from '../services/authentication/authentication.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,8 +14,9 @@ export class LoginPage implements OnInit {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
-
-  constructor(private router: Router) {}
+  user:any = {};
+  constructor(private router: Router, 
+    private authService: AuthenticationService,) {}
 
   ngOnInit() {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -24,14 +26,24 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    const defaultEmail = 'admin@schoolerp.com';
-    const defaultPassword = 'admin123';
+    if (this.user.username != '' && this.user.password != '') {
+      this.authService.login(this.user)
+        .then((data: any) => {
+          this.authService.publishUserData({
+            user: data.profile
+          });
+          this.authService.publishTokenData({
+            token: data.token
+          });
 
-    if (this.email === defaultEmail && this.password === defaultPassword) {
-      localStorage.setItem('isLoggedIn', 'true');
-      this.router.navigate(['/home']);
-    } else {
-      this.errorMessage = 'Invalid email or password';
+          if (data) {
+            localStorage.setItem('userData',JSON.stringify(data))
+            this.router.navigate(['/home']);
+          }
+        }).catch(error => {
+        console.log(error);
+      });
     }
+    
   }
 }

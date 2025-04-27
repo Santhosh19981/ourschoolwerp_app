@@ -22,7 +22,7 @@
 
 <div class="mobileScreen">
   <header>
-    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    <i class="fa fa-arrow-left" aria-hidden="true" hidden></i>
     <span class="title">Student App</span>
     <div class="titleContainer">
 <!--     
@@ -36,7 +36,10 @@
       <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="user" (click)="profileNavigate()" style="cursor: pointer; width: 100px; height: auto;">
     </div>
     <div>
-      <button (click)="logout()">Logout</button>
+      <ion-icon name="log-out-outline" style="font-size: 24px;color: green;" slot="start" (click)="logout()"></ion-icon>
+    </div>
+    <div>
+      <!-- <button (click)="logout()">Logout</button> -->
 
     </div>
   </div>
@@ -54,9 +57,9 @@
             <img src="https://t3.ftcdn.net/jpg/03/39/60/22/360_F_339602256_dBq6bYfHWzlnRQkXgAMFXZfx2r1DPQns.jpg" alt="" >
           </div>
           <div class="textContent">
-            <span class="title">D Parthi Sai Raju</span>
+            <span class="title">{{loginprofile?.profile.name}}</span>
             <span class="shortDescription">
-             ELITE - Olympasid
+             {{loginprofile?.profile.registerNO}}
             </span>
           </div>
         </div>
@@ -64,24 +67,33 @@
       </div>
       <div class="platterBody">
         <div class="platterInfoBox">
-          <span class="label">Admission Number</span>
-          <span class="value">12345678</span>
+          <span class="label">Mobile Number</span>
+          <span class="value">{{loginprofile?.profile.phone}}</span>
         </div>
         <div class="platterInfoBox">
           <span class="label">Roll Number</span>
-          <span class="value">123456</span>
+          <span class="value">{{loginprofile?.profile.roll}}</span>
         </div>
         <div class="platterInfoBox">
           <span class="label">Class</span>
-          <span class="value">8 Stands</span>
+          <span class="value">{{loginprofile?.profile.srclasses}}</span>
         </div>
         <div class="platterInfoBox">
           <span class="label">Section</span>
-          <span class="value">B</span>
+          <span class="value">{{loginprofile?.profile.srsection}}</span>
         </div>
       </div>
     </div>
-    <div class="">
+      <!-- Menu Grid -->
+      <div class="row g-3">
+        <div *ngFor="let menu of studentMenu" class="col-4">
+          <div class="card shadow-sm border-0 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center p-2"  style="cursor: pointer;">
+            <ion-icon [name]="menu.icon" size="large" class="mb-2"></ion-icon>
+            <p class="small fw-semibold text-center m-0 text-wrap" style="font-size: 13px;">{{ menu.title }}</p>
+          </div>
+        </div>
+      </div>
+    <!-- <div class="">
       <div class="box-wrap">
         <div class="box1" >
           <i class="fa fa-graduation-cap modal-toggle" aria-hidden="true"></i>
@@ -133,8 +145,10 @@
           <span>Settings</span>
         </div>
       </div>
-    </div>
+    </div> -->
     
   </section>
  
 </div>
+
+<app-loader *ngIf="isLoading"></app-loader>

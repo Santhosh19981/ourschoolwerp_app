@@ -487,3 +487,14 @@ height: 8px;
 ::-webkit-scrollbar-track {
   background: rgba(0,0,0,0.1);
 }
+
+
+ion-icon {
+  color: #007bff; /* or your theme color */
+}
+.card {
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
