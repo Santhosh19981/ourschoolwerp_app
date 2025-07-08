@@ -15,39 +15,41 @@
 <div class="mobileScreen">
   <div class="header">
     <div class="col-md-12">
-        <div class="logo">
-            <img src="../../assets/images/logo.jpg" style="width:45px;" (click)="navigateHome()">
-        </div>
-        <div class="loins">
-          <div class="navigation">
-            <div class="user-box">
-              <div class="image-box">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxivAs4UknzmDfLBXGMxQkayiZDhR2ftB4jcIV7LEnIEStiUyMygioZnbLXCAND-I_xWQpVp0jv-dv9NVNbuKn4sNpXYtLIJk2-IOdWQNpC2Ldapnljifu0pnQqAWU848Ja4lT9ugQex-nwECEh3a96GXwiRXlnGEE6FFF_tKm66IGe3fzmLaVIoNL/s1600/img_avatar.png" alt="avatar">
-              </div>
-              <p class="username">D Poojitha</p>
+      <div class="logo">
+        <img src="../../assets/images/logo.jpg" style="width:45px;" (click)="navigateHome()">
+      </div>
+      <div class="loins">
+        <div class="navigation">
+          <div class="user-box">
+            <div class="image-box">
+               <img *ngIf="loginprofile"
+                src="{{siteUrl}}uploads/images/{{loginprofile.profile.photo}}"
+                alt="avatar">
             </div>
-            <div class="menu-toggle"></div>
-            <ul class="menu">
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages</a></li>
-              <li><a href="#">Notification</a></li>
-              <li><a href="#">Settings</a></li>
-          <li><a href="#">Logout</a></li>
+            <p class="username">D Poojitha</p>
+          </div>
+          <div class="menu-toggle"></div>
+          <ul class="menu">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Notification</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
           </ul>
         </div>
-        </div>
+      </div>
     </div>
-</div>
+  </div>
   
   <section class="platters">
-    <div class="titleBar">
-      <h1>chaitanya bharathi School</h1>
+    <div class="titleBar"  *ngIf="loginprofile">
+      <h1>{{loginprofile?.setting.sname}}</h1>
     </div>
     <div class="platterBox">
       <div class="platterHeader">
         <div class="titleContainer">
           <div class="iconContainer">
-            <img src="https://t3.ftcdn.net/jpg/03/39/60/22/360_F_339602256_dBq6bYfHWzlnRQkXgAMFXZfx2r1DPQns.jpg" alt="">
+            <img src="{{siteUrl}}uploads/images/{{loginprofile.profile.photo}}" alt="">
           </div>
           <div class="textContent">
             <span class="title">{{loginprofile?.profile.name}}</span>

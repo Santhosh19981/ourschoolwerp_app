@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { LangandparmisionService } from '../services/langandparmision.service';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
+import { fileUrl } from '../config/config';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   providers: [CallNumber],
   standalone: false,
+  encapsulation: ViewEncapsulation.None
 })
 export class HomePage {
  menus:any=[];
+
  studentMenu:any= [
   { title: 'Call to Teacher', icon: 'call-outline', route: '/call-teacher' },
   { title: 'Call to Principal', icon: 'call-outline', route: '/call-principal' },
@@ -37,38 +40,45 @@ export class HomePage {
   loginprofile: any;
   language: any;
   isLoading:boolean = false;
+  teacherNumber:string ="";
+  principalNumber: string ="";
+   siteUrl: any;
   constructor(private router: Router,
     private langandparmisionService: LangandparmisionService,private callNumber: CallNumber
-  ) {}
+  ) {this.siteUrl = fileUrl;}
 
-  ngOnInit(){
+  ngOnInit(){ 
     const userData = localStorage.getItem('userData');
     if(!userData)
       this.router.navigate(['/login']);
     if(userData){
       const user = JSON.parse(userData);
-      if(user.usertype == "Student")
-        this.menus = this.studentMenu;
+      if(user.usertype == "Student"){
+         this.teacherNumber =  user?.teacher_phone || "";
+       this.principalNumber = user?.correspondent_phone || "";
+         this.menus = this.studentMenu;
+      }
     }
-      
-    this.permissioncall();
-    this.profile();
+     this.profile();
+   
   }
+
   profile(){
     this.isLoading =true;
-    this.langandparmisionService.getUserProfile().subscribe((data: any) => {   
-     
+    this.langandparmisionService.getUserProfile().subscribe((data: any) => {        
       if(data.status == true)
       {
         setTimeout(() => {
           this.isLoading = false;
          }, 1);
-        this.loginprofile = data.data
+        this.loginprofile = data.data;
+        localStorage.setItem('loggedinData',JSON.stringify(this.loginprofile))
       }
        
     })
 
   }
+
   permissioncall() {
     this.langandparmisionService.getLangandPermissionCall('dashboard').subscribe((data: any) => {
           if(data.status == true)
@@ -82,15 +92,20 @@ export class HomePage {
           }
            
         })
-}
-  profileNavigate(){
-    this.router.navigate(['/profile']);
   }
+
+  profileNavigate(){
+   this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+  this.router.navigate(['/profile']);
+});
+  }
+
   logout() {
     localStorage.removeItem('isLoggedIn');
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+
   gotoMenu(menu:any){
     if(menu == 'Call to Teacher')
       this.callTeacher();
@@ -98,18 +113,44 @@ export class HomePage {
       this.callPrincipal();
     else if(menu == 'Student Info')
       this.profileNavigate();
-
+    else if(menu == 'Attendance')
+      this.router.navigate(['/attendence']);
+    else if(menu == 'Events')
+      this.router.navigate(['/events']);
+    else if(menu == 'Apply Leave')
+      this.router.navigate(['/leaves']);
+    else if(menu == 'Holidays')
+      this.router.navigate(['/holiday']);
+    else if(menu == 'Exam Marks')
+      this.router.navigate(['/marks']);
+    else if(menu == 'Fees')
+      this.router.navigate(['/fee']);
+     else if(menu == 'Youtube')
+      this.router.navigate(['/youtubelinks']);
+    
   }
+
   callTeacher() {
-    this.callNumber.callNumber("8500814626", true)
+    if(!this.teacherNumber){
+       const userData:any = localStorage.getItem('userData');
+        const user = JSON.parse(userData);
+         this.teacherNumber =  user?.teacher_phone || "";
+       this.principalNumber = user?.correspondent_phone || "";
+         this.menus = this.studentMenu;
+    }
+    this.callNumber.callNumber(this.teacherNumber, true)
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
   }
 
   callPrincipal() {
-    this.callNumber.callNumber("9908611834", true)
+    this.callNumber.callNumber(this.principalNumber, true)
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
   }
+
+  //  ionViewWillEnter() {
+  //   this.profile();
+  //  }
 
 }

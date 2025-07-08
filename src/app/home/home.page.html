@@ -21,17 +21,34 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 <div class="mobileScreen">
-  <header>
+  <div class="header">
+    <div class="col-md-12">
+      <div class="logo">
+        <img src="../../assets/images/logo.jpg" style="width:45px;">
+      </div>
+      <div class="loins">
+        <div class="navigation">
+          <div class="user-box">
+            <div class="image-box">
+              <img *ngIf="loginprofile"
+                src="{{siteUrl}}uploads/images/{{loginprofile.profile.photo}}"
+                alt="avatar">
+            </div>
+            <ion-icon name="log-out-outline" style="font-size: 24px;color: white;" slot="start" (click)="logout()"></ion-icon>
+          </div>
+          
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <header>
     <i class="fa fa-arrow-left" aria-hidden="true" hidden></i>
     <span class="title">Student App</span>
     <div class="titleContainer">
-<!--     
-    <div>
-      <i class="fa fa-phone" aria-hidden="true"></i>
-    </div> -->
-    <div>
-      <i class="fab fa-whatsapp" style="font-size: 24px;color: green;" aria-hidden="true"></i>
-    </div>
+
     <div class="user">
       <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="user" (click)="profileNavigate()" style="cursor: pointer; width: 100px; height: auto;">
     </div>
@@ -39,22 +56,22 @@
       <ion-icon name="log-out-outline" style="font-size: 24px;color: green;" slot="start" (click)="logout()"></ion-icon>
     </div>
     <div>
-      <!-- <button (click)="logout()">Logout</button> -->
+   
 
     </div>
   </div>
     
-  </header>
+  </header> -->
   
   <section class="platters">
-    <div class="titleBar">
-      <h1>chaitanya bharathi School</h1>
+    <div class="titleBar" *ngIf="loginprofile">
+      <h1>{{loginprofile?.setting.sname}}</h1>
     </div>
     <div class="platterBox">
       <div class="platterHeader">
         <div class="titleContainer">
           <div class="iconContainer">
-            <img src="https://t3.ftcdn.net/jpg/03/39/60/22/360_F_339602256_dBq6bYfHWzlnRQkXgAMFXZfx2r1DPQns.jpg" alt="" >
+            <img *ngIf="loginprofile" src="{{siteUrl}}uploads/images/{{loginprofile.profile.photo}}" alt="" >
           </div>
           <div class="textContent">
             <span class="title">{{loginprofile?.profile.name}}</span>
@@ -87,10 +104,17 @@
       <!-- Menu Grid -->
       <div class="row g-3">
         <div *ngFor="let menu of studentMenu" class="col-4">
-          <div class="card shadow-sm border-0 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center p-2"  style="cursor: pointer;" (click)="gotoMenu(menu.title)">
-            <ion-icon [name]="menu.icon" size="large" class="mb-2"></ion-icon>
-            <p class="small fw-semibold text-center m-0 text-wrap" style="font-size: 13px;">{{ menu.title }}</p>
+          <div class="box" style="cursor: pointer;" (click)="gotoMenu(menu.title)">
+            <div class="icon"><ion-icon [name]="menu.icon" size="large"></ion-icon></div>
+            <div class="content">
+              <p class="small fw-semibold text-center m-0 text-wrap" style="font-size: 12px;">{{ menu.title }}</p>
           </div>
+          </div>
+
+          <!-- <div class="card  border-0 rounded-4 d-flex flex-column align-items-center justify-content-center p-3"  style="cursor: pointer;" (click)="gotoMenu(menu.title)">
+            <ion-icon [name]="menu.icon" size="large" class="mb-2 icon-box"></ion-icon>
+            <p class="small fw-semibold text-center m-0 text-wrap" style="font-size: 12px;">{{ menu.title }}</p>
+          </div> -->
         </div>
       </div>
     <!-- <div class="">

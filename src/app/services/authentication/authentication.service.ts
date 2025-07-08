@@ -115,7 +115,7 @@ export class AuthenticationService {
                 this.http.post(ApiEndPoint + 'signin/index', user).subscribe((data: any) => {
                     localStorage.setItem('tokenKey', data.data.token);
                     this.authState.next(true);
-                    localStorage.setItem('Profile', data.data.profile);
+                    localStorage.setItem('Profile', JSON.stringify(data.data.profile));
                     resolve(data.data);
                 }, err => {
                     reject(err.error);

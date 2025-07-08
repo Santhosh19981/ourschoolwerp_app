@@ -29,13 +29,14 @@ export class LoginPage implements OnInit {
     if (this.user.username != '' && this.user.password != '') {
       this.authService.login(this.user)
         .then((data: any) => {
+          debugger;
           this.authService.publishUserData({
             user: data.profile
           });
           this.authService.publishTokenData({
             token: data.token
           });
-
+          
           if (data) {
             localStorage.setItem('userData',JSON.stringify(data))
             this.router.navigate(['/home']);

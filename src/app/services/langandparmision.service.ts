@@ -37,5 +37,56 @@ export class LangandparmisionService {
           });
         }
       }
+      getStudentAttendence(classID:any): Observable<any> {
+        const token = localStorage.getItem('tokenKey');
+        if (token) {
+          return this.http.get(ApiEndPoint + 'sattendance/index/' + classID);
+        } else {
+          // Return an empty observable if token is not available
+          return new Observable(observer => {
+            observer.error('No token found');
+            observer.complete();
+          });
+        }
+      }
+
+      getEvents(): Observable<any> {
+        const token = localStorage.getItem('tokenKey');
+        if (token) {
+          return this.http.get(ApiEndPoint + 'event/index/');
+        } else {
+          // Return an empty observable if token is not available
+          return new Observable(observer => {
+            observer.error('No token found');
+            observer.complete();
+          });
+        }
+      }
+      getHolidays(): Observable<any> {
+        const token = localStorage.getItem('tokenKey');
+        if (token) {
+          return this.http.get(ApiEndPoint + 'holiday/index/');
+        } else {
+          // Return an empty observable if token is not available
+          return new Observable(observer => {
+            observer.error('No token found');
+            observer.complete();
+          });
+        }
+      }
+
+      getMarks(): Observable<any> {
+        const token = localStorage.getItem('tokenKey');
+        if (token) {
+          return this.http.get(ApiEndPoint + 'Mark/index/');
+        } else {
+          // Return an empty observable if token is not available
+          return new Observable(observer => {
+            observer.error('No token found');
+            observer.complete();
+          });
+        }
+      }
+
 
     }

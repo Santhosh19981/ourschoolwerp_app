@@ -1,0 +1,338 @@
+<div class="mobileScreen">
+  <!-- Header Start -->
+  <div class="header">
+    <div class="col-md-12">
+      <div class="logo"  >
+        <img src="../../assets/images/logo.jpg" style="width:45px;">
+      </div>
+      <div class="loins">
+        <div class="navigation">
+          <div class="user-box">
+            <div class="image-box">
+              <img
+                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxivAs4UknzmDfLBXGMxQkayiZDhR2ftB4jcIV7LEnIEStiUyMygioZnbLXCAND-I_xWQpVp0jv-dv9NVNbuKn4sNpXYtLIJk2-IOdWQNpC2Ldapnljifu0pnQqAWU848Ja4lT9ugQex-nwECEh3a96GXwiRXlnGEE6FFF_tKm66IGe3fzmLaVIoNL/s1600/img_avatar.png"
+                alt="avatar">
+            </div>
+            <p class="username">D Poojitha</p>
+          </div>
+          <div class="menu-toggle"></div>
+          <ul class="menu">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Notification</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+
+  <!-- Breadcrumb Strat -->
+
+
+  <div class="container py-2">
+    <div class="d-flex align-items-center justify-content-between mb-1 p-2">
+
+      <!-- Back Icon -->
+      <i class="fa fa-arrow-left" style="cursor: pointer;"  (click)="navigateHome()"></i>
+
+      <!-- Title and Button Container -->
+      <div class="d-flex justify-content-center align-items-center flex-grow-1 position-relative">
+        <h1 class="m-0 text-center" style="font-size: 20px;">Fees</h1>
+      </div>
+
+    </div>
+  </div>
+  <!-- Breadcrumb End -->
+
+  <!-- Fees Start -->
+
+  <div class="fee">
+    <div *ngIf="islist">
+    <div class="platterBox" (click)="gotoSummary()" >
+      <div class="platterHeader">
+        <div class="titleContainer1">
+          <div class="d-flex">
+            <span class="icon icon--leadind">
+              <svg class="svg-inline--fa fa-calendar-alt fa-w-14" aria-hidden="true" data-prefix="fas"
+                data-icon="calendar-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                data-fa-i2svg="">
+                <path fill="currentColor"
+                  d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z">
+                </path>
+              </svg><!-- <i class="fas fa-calendar-alt"></i> -->
+            </span>
+            <span class="date">07 Sep, 2025</span>
+          </div>
+
+
+          <div class="textContent">
+            <span class="badge rounded-pill text-white px-3 py-[0.5rem]"
+              style="background: transparent;cursor: pointer;background: #00a261 !important;color:#fff;border: 1px solid #00a261;">
+              Paid</span>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="fee-content">
+        <div class="textContent">
+          <span class="title">School Fee For May</span>
+        </div>
+        <div class="textContent">
+          <span class="title">3000/-</span>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="platterBox" (click)="gotoSummary()">
+      <div class="platterHeader">
+        <div class="titleContainer1">
+          <div class="d-flex">
+            <span class="icon icon--leadind">
+              <svg class="svg-inline--fa fa-calendar-alt fa-w-14" aria-hidden="true" data-prefix="fas"
+                data-icon="calendar-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                data-fa-i2svg="">
+                <path fill="currentColor"
+                  d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z">
+                </path>
+              </svg><!-- <i class="fas fa-calendar-alt"></i> -->
+            </span>
+            <span class="date">07 Sep, 2025</span>
+          </div>
+
+
+          <div class="textContent">
+            <span class="badge rounded-pill text-white px-3 py-[0.5rem]"
+              style="background: transparent;cursor: pointer;background: #00a261 !important;color:#fff;border: 1px solid #00a261;">
+              Paid</span>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="fee-content">
+        <div class="textContent">
+          <span class="title">School Fee For May</span>
+        </div>
+        <div class="textContent">
+          <span class="title">3000/-</span>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="platterBox" (click)="gotoSummary()">
+      <div class="platterHeader">
+        <div class="titleContainer1">
+          <div class="d-flex">
+            <span class="icon icon--leadind">
+              <svg class="svg-inline--fa fa-calendar-alt fa-w-14" aria-hidden="true" data-prefix="fas"
+                data-icon="calendar-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                data-fa-i2svg="">
+                <path fill="currentColor"
+                  d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z">
+                </path>
+              </svg><!-- <i class="fas fa-calendar-alt"></i> -->
+            </span>
+            <span class="date">07 Sep, 2025</span>
+          </div>
+
+
+          <div class="textContent">
+            <span class="badge rounded-pill text-white px-3 py-[0.5rem]"
+              style="background: transparent;cursor: pointer;background: #00a261 !important;color:#fff;border: 1px solid #00a261;">
+              Paid</span>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="fee-content">
+        <div class="textContent">
+          <span class="title">School Fee For May</span>
+        </div>
+        <div class="textContent">
+          <span class="title">3000/-</span>
+        </div>
+
+      </div>
+
+    </div>
+
+     <div class="platterBox" (click)="gotoSummary()">
+      <div class="platterHeader">
+        <div class="titleContainer1">
+          <div class="d-flex">
+            <span class="icon icon--leadind">
+              <svg class="svg-inline--fa fa-calendar-alt fa-w-14" aria-hidden="true" data-prefix="fas"
+                data-icon="calendar-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                data-fa-i2svg="">
+                <path fill="currentColor"
+                  d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z">
+                </path>
+              </svg><!-- <i class="fas fa-calendar-alt"></i> -->
+            </span>
+            <span class="date">07 Sep, 2025</span>
+          </div>
+
+
+          <div class="textContent">
+            <span class="badge rounded-pill text-white px-3 py-[0.5rem]"
+              style="background: transparent;cursor: pointer;background: #ffae3f !important;color:#fff;border: 1px solid #ffae3f;">
+              unpaid</span>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="fee-content">
+        <div class="textContent">
+          <span class="title">School Fee For May</span>
+        </div>
+        <div class="textContent">
+          <span class="title">3000/-</span>
+        </div>
+
+      </div>
+
+    </div>
+    
+     <div class="platterBox" (click)="gotoSummary()">
+      <div class="platterHeader">
+        <div class="titleContainer1">
+          <div class="d-flex">
+            <span class="icon icon--leadind">
+              <svg class="svg-inline--fa fa-calendar-alt fa-w-14" aria-hidden="true" data-prefix="fas"
+                data-icon="calendar-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                data-fa-i2svg="">
+                <path fill="currentColor"
+                  d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z">
+                </path>
+              </svg><!-- <i class="fas fa-calendar-alt"></i> -->
+            </span>
+            <span class="date">07 Sep, 2025</span>
+          </div>
+
+
+          <div class="textContent">
+            <span class="badge rounded-pill text-white px-3 py-[0.5rem]"
+              style="background: transparent;cursor: pointer;background: #ffae3f !important;color:#fff;border: 1px solid #ffae3f;">
+              unpaid</span>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="fee-content">
+        <div class="textContent">
+          <span class="title">School Fee For May</span>
+        </div>
+        <div class="textContent">
+          <span class="title">3000/-</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    </div>
+
+    <!-- Fees Details Strat -->
+    <div class="Fee-box" *ngIf="isSummary">
+      <div class="title-box">
+        <h3>School Fee For May</h3>
+        <p>ID: 548856</p>
+      </div>
+
+      <div class="border"></div>
+      <div class="cost-box">
+        <div>
+          <p>School Fee</p>
+          <p class="VAT">$123.00</p>
+        </div>
+        <div>
+          <p>Tution Fee</p>
+          <p class="VAT">$123.00</p>
+        </div>
+
+        <div>
+          <p>Library Fee</p>
+          <p class="VAT">$123.00</p>
+        </div>
+        <div>
+          <p>Activity Fee</p>
+          <p class="VAT">$123.00</p>
+        </div>
+        <div>
+          <p>Exam Fee</p>
+          <p class="VAT">$123.00</p>
+        </div>
+        <div>
+          <p>Late Charges</p>
+          <p class="VAT">$123.00</p>
+        </div>
+        <div>
+          <p>Discount (%%)</p>
+          <p class="VAT">$123.00</p>
+        </div>
+        <div class="border"></div>
+        <div>
+          <p>Total Fee</p>
+          <p class="VAT">$1234.00</p>
+        </div>
+
+      </div>
+      
+    </div>
+
+
+    <!-- Fee Details End -->
+
+
+    <!--- Payment Gateway Start -->
+    <div class="Fee-box" *ngIf="ispayment">
+
+      <!---Payment Gate Way start -->
+      <div class="card-plan">
+        <div class="card-plan-img"><img style="width: 35px;"
+            src="https://images.seeklogo.com/logo-png/27/2/google-logo-png_seeklogo-273191.png" alt=""></div>
+        <div class="card-plan-text">
+          <div class="card-plan-title">Google Pay</div>
+        </div>
+        <!-- <div class="card-plan-link"><a href="#!">Change</a></div> -->
+      </div>
+      <div class="card-plan">
+        <div class="card-plan-img"><img style="width: 35px;border-radius: 5px;"
+            src="https://ps.w.org/phonepe-payment-solutions/assets/icon-256x256.png?rev=2756185" alt=""></div>
+        <div class="card-plan-text">
+          <div class="card-plan-title">phonepe</div>
+        </div>
+        <!-- <div class="card-plan-link"><a href="#!">Change</a></div> -->
+      </div>
+      <div class="card-plan">
+        <div class="card-plan-img"><img style="width: 45px;" src="https://img.icons8.com/color/512/visa.png" alt="">
+        </div>
+        <div class="card-plan-text">
+          <div class="card-plan-title">VISA Pay </div>
+        </div>
+        <!-- <div class="card-plan-link"><a href="#!">Change</a></div> -->
+      </div>
+    </div>
+
+<div class="btn-section" (click)="paynow()">
+  <button class="Checkout-btn">Pay Now</button>
+</div>
+    <!--- Payment Gateway End -->
+  </div>
+  <!-- Fees End -->
+
+</div>

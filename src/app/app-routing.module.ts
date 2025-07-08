@@ -22,6 +22,38 @@ const routes: Routes = [
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'attendence',
+    loadChildren: () => import('./pages/attendence/attendence.module').then( m => m.AttendencePageModule)
+  },
+  {
+    path: 'events',
+    loadChildren: () => import('./pages/events/events.module').then( m => m.EventsPageModule)
+  },
+  {
+    path: 'leaves',
+    loadChildren: () => import('./pages/leaves/leaves.module').then( m => m.LeavesPageModule)
+  },
+  {
+    path: 'apply-leave',
+    loadChildren: () => import('./pages/apply-leave/apply-leave.module').then( m => m.ApplyLeavePageModule)
+  },
+  {
+    path: 'holiday',
+    loadChildren: () => import('./pages/holiday/holiday.module').then( m => m.HolidayPageModule)
+  },
+  {
+    path: 'marks',
+    loadChildren: () => import('./pages/marks/marks.module').then( m => m.MarksPageModule)
+  },
+  {
+    path: 'fee',
+    loadChildren: () => import('./pages/fee/fee.module').then( m => m.FeePageModule)
+  },
+  {
+    path: 'youtubelinks',
+    loadChildren: () => import('./pages/youtubelinks/youtubelinks.module').then( m => m.YoutubelinksPageModule)
+  },
   // Add other protected or unprotected routes below as needed
 ];
 
