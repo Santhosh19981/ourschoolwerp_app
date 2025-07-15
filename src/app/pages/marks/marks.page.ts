@@ -96,5 +96,19 @@ getTotalMarks(subjects: Record<string, Record<string, string>>): number {
     }
   }
 
+
+    get percentage(): number {
+    return (this.totalMarks / this.maxMarks) * 100;
+  }
+
+  get feedback(): string {
+    if (this.percentage >= 75) {
+      return 'Excellent';
+    } else if (this.percentage >= 50) {
+      return 'Good';
+    } else {
+      return 'Needs Improvement';
+    }
+  }
   
 }

@@ -19,7 +19,7 @@ export class HomePage {
   { title: 'Call to Principal', icon: 'call-outline', route: '/call-principal' },
   { title: 'Student Info', icon: 'person-circle-outline', route: '/student-info' },
   { title: 'Attendance', icon: 'checkmark-done-outline', route: '/attendance' },
-  { title: 'Diary', icon: 'book-outline', route: '/diary' },
+  { title: 'Home Work', icon: 'book-outline', route: '/diary' },
   { title: 'Exam Schedule', icon: 'calendar-outline', route: '/exam-schedule' },
   { title: 'Exam Marks', icon: 'clipboard-outline', route: '/exam-marks' },
   { title: 'Exam Syllabus', icon: 'document-text-outline', route: '/exam-syllabus' },
@@ -34,6 +34,7 @@ export class HomePage {
   { title: 'Time Table', icon: 'time-outline', route: '/time-table' },
   { title: 'Pay Fee', icon: 'cash-outline', route: '/pay-fee' },
   { title: 'Academic Calendar', icon: 'school-outline', route: '/academic-calendar' },
+  { title: 'Whatsapp', icon: 'logo-whatsapp', route: '/youtube' },
   { title: 'Youtube', icon: 'logo-youtube', route: '/youtube' }
 ];
   permission: any;
@@ -152,5 +153,9 @@ export class HomePage {
   //  ionViewWillEnter() {
   //   this.profile();
   //  }
+  openWhatsApp(): void {
+    const whatsappUrl = `https://wa.me/${this.teacherNumber}`;
+    window.open(whatsappUrl, '_blank');
+  }
 
 }

@@ -131,15 +131,15 @@
             <p>of {{ maxMarks }}</p>
           </div>
           <div class="feedback flex flex-center flex-col">
-            <span class="font-medium">{{ totalMarks >= 75 ? 'Excellent' : totalMarks >= 50 ? 'Good' : 'Needs Improvement' }}</span>
-            <p>You scored higher than 65% of the people who have taken these
+            <span class="font-medium">{{ feedback }}</span>
+            <p>You scored {{ percentage | number:'1.0-2' }}%.of the people who have taken these
               tests.</p>
           </div>
         </div>
       </article>
       <article class="summary-card card flex flex-col">
         <!-- <h2 class="font-medium mb-3">Marks Card</h2> -->
-        <div class="break-down flex flex-col gap-2" *ngFor="let subject of subjects">
+        <div class="break-down flex flex-col gap-2" *ngFor="let subject of subjects" style="margin-bottom: 5px;">
           <div class="tile reaction flex">
             <div class="source flex gap-1">
               <i class="fa fa-book" aria-hidden="true"></i>
