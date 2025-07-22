@@ -87,6 +87,9 @@ export class LangandparmisionService {
           });
         }
       }
-
+      
+       sendDeviceToken(payload:any){
+        return this.http.post(ApiEndPoint + 'Token/store_token', payload);
+      }
 
     }
