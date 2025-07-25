@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LangandparmisionService } from '../services/langandparmision.service';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { fileUrl } from '../config/config';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -45,7 +46,7 @@ export class HomePage {
   principalNumber: string ="";
    siteUrl: any;
   constructor(private router: Router,
-    private langandparmisionService: LangandparmisionService,private callNumber: CallNumber
+    private langandparmisionService: LangandparmisionService,private callNumber: CallNumber,private toastController: ToastController
   ) {this.siteUrl = fileUrl;}
 
   ngOnInit(){ 
@@ -128,6 +129,8 @@ export class HomePage {
       this.router.navigate(['/fee']);
      else if(menu == 'Youtube')
       this.router.navigate(['/youtubelinks']);
+     else if(menu == 'Whatsapp')
+    this.openWhatsApp()
     
   }
 
@@ -153,7 +156,21 @@ export class HomePage {
   //  ionViewWillEnter() {
   //   this.profile();
   //  }
+   async showToast(message: string, type: 'success' | 'danger' = 'success') {
+  const toast = await this.toastController.create({
+    message: message,
+    duration: 3000,
+    color: type, // 'success' (green) or 'danger' (red)
+    position: 'top'
+  });
+  toast.present();
+}
   openWhatsApp(): void {
+    if(!this.teacherNumber){
+      this.showToast('Teacher is not available.', 'danger');
+      return;
+    }
+       
     const whatsappUrl = `https://wa.me/${this.teacherNumber}`;
     window.open(whatsappUrl, '_blank');
   }
