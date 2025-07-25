@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
     if (this.user.username != '' && this.user.password != '') {
       this.authService.login(this.user)
         .then(async (data: any) => {
-          debugger;
+          
           this.userdata = data.profile;
           this.authService.publishUserData({
             user: data.profile
@@ -67,7 +67,7 @@ export class LoginPage implements OnInit {
 
  async sendDeviceToken() {
   try {
-    debugger;
+    
     const id: any = await Device.getId();
     const platform = this.platform.is('android') ? 'android' : 'ios';
 
@@ -79,7 +79,7 @@ export class LoginPage implements OnInit {
 
     this.apiservice.sendDeviceToken(payload).subscribe({
       next: (data: any) => {
-debugger;
+
         if (data && data.status === true) {
           this.router.navigate(['/home']);
         } else {

@@ -92,4 +92,8 @@ export class LangandparmisionService {
         return this.http.post(ApiEndPoint + 'Token/store_token', payload);
       }
 
+      getyoutubelinks(){
+        return this.http.get(ApiEndPoint + 'Youtube/links?schoolyear_id=5&class_id=1' );
+      }
+
     }
