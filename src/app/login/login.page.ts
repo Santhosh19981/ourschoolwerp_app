@@ -39,30 +39,42 @@ export class LoginPage implements OnInit {
 }
 
   async login() {
-    if (this.user.username != '' && this.user.password != '') {
-      this.authService.login(this.user)
-        .then(async (data: any) => {
-          
-          this.userdata = data.profile;
-          this.authService.publishUserData({
-            user: data.profile
-          });
-          this.authService.publishTokenData({
-            token: data.token
-          });
-          
-          if (data) {
-            localStorage.setItem('userData',JSON.stringify(data))
-             this.showToast('Login successful!', 'success');
-           await this.sendDeviceToken()
-           // this.router.navigate(['/home']);
-          }
-        }).catch(error => {
-            this.showToast('Invalid login details.', 'danger');
+  if (this.user.username != '' && this.user.password != '') {
+    this.authService.login(this.user)
+      .then(async (data: any) => {
+        this.userdata = data.profile;
+        localStorage.setItem('teacher',data.teacher_phone);
+        localStorage.setItem('prinicpal',data.correspondent_phone)
+
+        this.authService.publishUserData({
+          user: data.profile
+        });
+        this.authService.publishTokenData({
+          token: data.token
+        });
+
+        if (data) {
+          await this.profile();
+          this.showToast('Login successful!', 'success');
+
+       this.router.navigateByUrl('/home', { replaceUrl: true });
+          this.sendDeviceToken(); 
+        }
+      })
+      .catch(error => {
+        this.showToast('Invalid login details.', 'danger');
         console.log(error);
       });
-    }
-    
+  }
+}
+
+  async profile(){
+    this.apiservice.getUserProfile().subscribe((data: any) => {        
+      if(data.status == true)
+      {
+        localStorage.setItem('loggedinData',JSON.stringify(data.data))
+      }       
+    })
   }
 
  async sendDeviceToken() {

@@ -24,24 +24,20 @@ isCurrentMonth = false;
   currentMonthIndex: number = 0;
   
   ngOnInit() {
-    const userData = localStorage.getItem('userData');
     const loggedinData:any  = localStorage.getItem('loggedinData');
   
-    if(!userData)
-      this.router.navigate(['/login']);
-    if(userData){
-      const user = JSON.parse(userData);
+   
       const loggedData = JSON.parse(loggedinData);
-      if(user.profile.usertype == "Student")
+      if(loggedData.usertype.usertype == "Student")
         this.getAttendence(loggedData.class.classesID)
-    }
+    
     const date = new Date();
     this.currentMonth = date.toLocaleString('default', { month: 'long' });
     this.currentDate = date.toLocaleString('default', { weekday: 'long' }) + ' ' + date.getDate() + ', ' + date.getFullYear();
     this.isCurrentMonth = true;
   }
   navigateHome() {
-    this.navCtrl.navigateRoot('/home');
+    this.router.navigate(['/home'], { replaceUrl: true });
   }
   getAttendence(classId:any){
     this.isLoading = true;

@@ -17,7 +17,7 @@ export class YoutubelinksPage implements OnInit {
     this.getyoutubelinks()
   }
  navigateHome() {
-    this.navCtrl.navigateRoot('/home');
+    this.router.navigate(['/home'], { replaceUrl: true });
   }
   getyoutubelinks(){
      this.langandparmisionService.getyoutubelinks().subscribe((data: any) => {

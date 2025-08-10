@@ -1,0 +1,142 @@
+.invoice-card {
+  border-left: 4px solid #3880ff;
+  margin: 0px 0px 12px 0px
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+
+// view
+.invoice {
+  position: relative;
+  width: 100%;
+  margin: 0px;
+  background: #fff;
+  border: 1px solid #f4f4f4;
+}
+.font-size {
+  font-size: 13px !important;
+}
+.div-overflow-css {
+  overflow-x:scroll;
+  padding: 5px;
+}
+.invoice {
+  position: relative;
+  width: 100%;
+  margin: 0px;
+  background: #fff;
+  border: 1px solid #f4f4f4;
+}
+.invoice-title {
+  margin-top: 0;
+}
+.text-red {
+  color: #f56954 !important;
+}
+.text-yellow {
+  color: #f39c12 !important;
+}
+.text-aqua {
+  color: #00c0ef !important;
+}
+.text-blue {
+  color: #0073b7 !important;
+}
+.text-black {
+  color: #222222 !important;
+}
+.text-light-blue {
+  color: #3c8dbc !important;
+}
+.text-green {
+  color: #00a65a !important;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+img {
+  max-width: 100% !important;
+}
+
+img {
+  vertical-align: middle;
+}
+img {
+  border: 0;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.table-bordered {
+  border: 1px solid #E2E7EB;
+}
+.table-bordered > thead > tr > th {
+  border-bottom-width: 2px;
+  color: #1A2229;
+  font-weight: 300;
+}
+.table-bordered > tbody > tr > td {
+  color: #707070;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > td {
+  border-color: #E2E7EB;
+  font-size: 12px;
+}
+
+.table-bordered>thead>tr>th,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>tbody>tr>td,
+.table-bordered>tfoot>tr>td {
+  border: 1px solid #ddd;
+}
+
+.table>thead>tr>th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+  padding: 4px;
+  line-height: 1.428571429;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+
+.table.table-bordered.product-style > thead > tr > th, .table.table-bordered.product-style > tbody > tr > td, .table.table-bordered.product-style > tfoot > tr > td {
+  font-size: 14px;
+  text-align: center;
+}
+
+.table.table-bordered.product-style > thead > tr > th {
+  background-color: #0054e9;
+  color: #fff;
+  font-weight: bold;
+}
+
+.table.table-bordered.product-style > thead > tr > th, .table.table-bordered.product-style > tbody > tr > td {
+  padding: 4px 4px !important;
+  line-height: 1.222;
+}
+
+.table.table-bordered.product-style > thead > tr > th > .form-control, .table.table-bordered.product-style > tbody > tr > td > .form-control {
+  text-align: center;
+}
+

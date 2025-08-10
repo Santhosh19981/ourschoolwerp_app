@@ -11,20 +11,19 @@
     </ion-toolbar>
   </ion-header>
 </ion-content> -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+  integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <div class="mobileScreen">
   <div class="header">
     <div class="col-md-12">
       <div class="logo">
-        <img src="../../assets/images/logo.jpg" style="width:45px;" (click)="navigateHome()">
+        <img src="../../assets/images/logo.png" style="width:45px;" (click)="navigateHome()">
       </div>
       <div class="loins">
         <div class="navigation">
           <div class="user-box">
             <div class="image-box">
-               <img *ngIf="loginprofile"
-                src="{{siteUrl}}uploads/images/{{loginprofile.profile.photo}}"
-                alt="avatar">
+              <img *ngIf="loginprofile" src="{{siteUrl}}uploads/images/{{loginprofile.profile.photo}}" alt="avatar">
             </div>
             <p class="username">D Poojitha</p>
           </div>
@@ -40,15 +39,32 @@
       </div>
     </div>
   </div>
-  
+
   <section class="platters">
-    <div class="titleBar"  *ngIf="loginprofile">
-      <h1>{{loginprofile?.setting.sname}}</h1>
+    <div class="container py-2">
+      <div class="d-flex align-items-center justify-content-between mb-1 p-2">
+
+        <!-- Back Icon -->
+        <i class="fa fa-arrow-left" style="cursor: pointer;" (click)="navigateHome()"></i>
+
+        <!-- Title and Button Container -->
+        <div class="d-flex justify-content-center align-items-center flex-grow-1 position-relative">
+          <h1 class="m-0 text-center" style="font-size: 20px;">
+            {{loginprofile?.setting.sname}}
+          </h1>
+        </div>
+
+      </div>
     </div>
+    <!-- <div class="titleBar"  *ngIf="loginprofile">
+      <h1>{{loginprofile?.setting.sname}}</h1>
+    </div> -->
+
+
     <div class="platterBox">
       <div class="platterHeader">
         <div class="titleContainer">
-          <div class="iconContainer">
+          <div class="iconContainer" *ngIf="loginprofile?.profile?.photo">
             <img src="{{siteUrl}}uploads/images/{{loginprofile.profile.photo}}" alt="">
           </div>
           <div class="textContent">
@@ -79,7 +95,7 @@
         </div>
       </div> -->
     </div>
-    <div class="card shadow-sm rounded-4">
+    <div class="card shadow-sm rounded-4" *ngIf="loginprofile">
       <div class="card-body">
         <h5 class="fw-bold mb-3">Personal Information</h5>
         <table class="table table-bordered small">
@@ -129,25 +145,25 @@
               <td>:</td>
               <td>{{loginprofile?.profile.bloodgroup}}</td>
             </tr>
-            
-           
+
+
           </tbody>
         </table>
       </div>
     </div>
-    
-  </section>
- 
 
-  
+  </section>
+
+
+
 </div>
 <script>
   let menuToggle = document.querySelector('.menu-toggle');
-let navigation = document.querySelector('.navigation');
+  let navigation = document.querySelector('.navigation');
 
-menuToggle.onclick = function() {
-  navigation.classList.toggle('active');
-}
+  menuToggle.onclick = function () {
+    navigation.classList.toggle('active');
+  }
 </script>
 
 <app-loader *ngIf="isLoading"></app-loader>

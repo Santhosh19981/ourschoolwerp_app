@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -9,7 +10,7 @@ import { NavController } from '@ionic/angular';
 })
 export class ApplyLeavePage implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController,private router: Router) { }
 
   ngOnInit() {
   }
@@ -17,6 +18,6 @@ export class ApplyLeavePage implements OnInit {
     this.navCtrl.navigateRoot('/leaves');
   }
   navigateHome() {
-    this.navCtrl.navigateRoot('/home');
+    this.router.navigate(['/home'], { replaceUrl: true });
   }
 }

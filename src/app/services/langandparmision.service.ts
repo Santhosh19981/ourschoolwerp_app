@@ -96,4 +96,30 @@ export class LangandparmisionService {
         return this.http.get(ApiEndPoint + 'Youtube/links?schoolyear_id=5&class_id=1' );
       }
 
+      getInvoiceList(): Observable<any> {
+        const token = localStorage.getItem('tokenKey');
+        if (token) {
+          return this.http.get(ApiEndPoint + 'Invoice/index/');
+        } else {
+          // Return an empty observable if token is not available
+          return new Observable(observer => {
+            observer.error('No token found');
+            observer.complete();
+          });
+        }
+      }
+      viewInvoice(id:any){
+         const token = localStorage.getItem('tokenKey');
+        if (token) {
+          return this.http.get(ApiEndPoint + 'Invoice/view/'+id);
+        } else {
+          // Return an empty observable if token is not available
+          return new Observable(observer => {
+            observer.error('No token found');
+            observer.complete();
+          });
+        }
+      }
+
+
     }

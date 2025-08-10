@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">OurSchoolERP</string>
-    <string name="title_activity_main">OurSchoolERP</string>
+    <string name="app_name">Our School Erp</string>
+    <string name="title_activity_main">Our School Erp</string>
     <string name="package_name">io.ionic.ourschoolerp</string>
     <string name="custom_url_scheme">io.ionic.ourschoolerp</string>
 </resources>

@@ -72,7 +72,7 @@ getTotalMarks(subjects: Record<string, Record<string, string>>): number {
     if (this.isResult)
       this.isResult = false;
     else
-      this.navCtrl.navigateRoot('/home');
+      this.router.navigate(['/home'], { replaceUrl: true });
   }
   gotoResult(data:any) {
     this.isResult = true;

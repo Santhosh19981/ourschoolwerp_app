@@ -39,7 +39,7 @@ export class HolidayPage implements OnInit {
       });
   }
   navigateHome() {
-    this.navCtrl.navigateRoot('/home');
+    this.router.navigate(['/home'], { replaceUrl: true });
   }
 
 }

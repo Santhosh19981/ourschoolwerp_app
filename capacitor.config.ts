@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.ourschoolerp', // ✅ Change this to your desired unique app ID
-  appName: 'OurSchoolERP',        // ✅ Use a clean, camel-cased app name without spaces
+  appName: 'Our School Erp',        // ✅ Use a clean, camel-cased app name without spaces
   webDir: 'www',
   plugins: {
     SplashScreen: {

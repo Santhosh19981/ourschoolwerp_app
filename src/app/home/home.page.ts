@@ -49,32 +49,28 @@ export class HomePage {
     private langandparmisionService: LangandparmisionService,private callNumber: CallNumber,private toastController: ToastController
   ) {this.siteUrl = fileUrl;}
 
-  ngOnInit(){ 
-    const userData = localStorage.getItem('userData');
-    if(!userData)
-      this.router.navigate(['/login']);
-    if(userData){
-      const user = JSON.parse(userData);
-      if(user.usertype == "Student"){
-         this.teacherNumber =  user?.teacher_phone || "";
-       this.principalNumber = user?.correspondent_phone || "";
-         this.menus = this.studentMenu;
-      }
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter triggered');
+    
+    const userData: any = localStorage.getItem('loggedinData');
+    if (userData) {
+      this.loginprofile = JSON.parse(userData);
+      console.log('Updated loginprofile:', this.loginprofile);
     }
-     this.profile();
-   
+
+    this.profile(); // optional: if you're fetching fresh data
   }
+
+  
 
   profile(){
     this.isLoading =true;
     this.langandparmisionService.getUserProfile().subscribe((data: any) => {        
       if(data.status == true)
       {
-        setTimeout(() => {
           this.isLoading = false;
-         }, 1);
         this.loginprofile = data.data;
-        localStorage.setItem('loggedinData',JSON.stringify(this.loginprofile))
+        localStorage.setItem('loggedinData',JSON.stringify(data.data))
       }
        
     })
@@ -103,18 +99,25 @@ export class HomePage {
   }
 
   logout() {
-    localStorage.removeItem('isLoggedIn');
+   // localStorage.removeItem('isLoggedIn');
+    //localStorage.removeItem('studentData');
     localStorage.clear();
-    this.router.navigate(['/login']);
+  this.router.navigate(['/login'], { replaceUrl: true });
   }
-
+  
   gotoMenu(menu:any){
     if(menu == 'Call to Teacher')
       this.callTeacher();
     else if(menu == 'Call to Principal')
       this.callPrincipal();
-    else if(menu == 'Student Info')
-      this.profileNavigate();
+    else if(menu == 'Student Info'){
+       if (!this.loginprofile || !this.loginprofile.profile) {
+      this.showToast('Profile not loaded yet. Please try again.', 'danger');
+      return;
+    }
+    this.profileNavigate();
+    return;
+    }      
     else if(menu == 'Attendance')
       this.router.navigate(['/attendence']);
     else if(menu == 'Events')
@@ -133,13 +136,14 @@ export class HomePage {
     this.openWhatsApp()
     
   }
-
+  
   callTeacher() {
     if(!this.teacherNumber){
-       const userData:any = localStorage.getItem('userData');
-        const user = JSON.parse(userData);
-         this.teacherNumber =  user?.teacher_phone || "";
-       this.principalNumber = user?.correspondent_phone || "";
+       const teacher:any = localStorage.getItem('teacher');
+      
+       
+         this.teacherNumber =  teacher ? teacher : "";
+      
          this.menus = this.studentMenu;
     }
     this.callNumber.callNumber(this.teacherNumber, true)
@@ -148,6 +152,9 @@ export class HomePage {
   }
 
   callPrincipal() {
+     const prinicpal:any = localStorage.getItem('prinicpal');
+      this.principalNumber = prinicpal? prinicpal : "";
+
     this.callNumber.callNumber(this.principalNumber, true)
       .then(res => console.log('Launched dialer!', res))
       .catch(err => console.log('Error launching dialer', err));
@@ -166,13 +173,23 @@ export class HomePage {
   toast.present();
 }
   openWhatsApp(): void {
-    if(!this.teacherNumber){
-      this.showToast('Teacher is not available.', 'danger');
-      return;
-    }
-       
-    const whatsappUrl = `https://wa.me/${this.teacherNumber}`;
-    window.open(whatsappUrl, '_blank');
+  const teacher: any = localStorage.getItem('teacher');
+  this.teacherNumber = teacher ? teacher : "";
+
+  if (!this.teacherNumber) {
+    this.showToast('Teacher number is not available.', 'danger');
+    return;
   }
+
+  // Ensure proper international format
+  let formattedNumber = this.teacherNumber.replace(/\D/g, ''); // Remove non-digits
+  if (formattedNumber.length === 10) {
+    formattedNumber = '91' + formattedNumber; // Add India country code
+  }
+
+  const whatsappUrl = `https://wa.me/${formattedNumber}`;
+  window.open(whatsappUrl, '_blank');
+}
+
 
 }

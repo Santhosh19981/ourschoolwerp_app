@@ -12,14 +12,16 @@ import { fileUrl } from '../config/config';
   standalone: false,
 })
 export class ProfilePage implements OnInit {
-  loginprofile:any
+  loginprofile:any;
   siteUrl:any;
   isLoading:boolean = false;
   constructor(private navCtrl: NavController, private modalCtrl: ModalController,private router: Router, private langandparmisionService: LangandparmisionService,) {this.siteUrl = fileUrl;}
   ngOnInit(): void {
-    const userData = localStorage.getItem('userData');
-    if(!userData)
+    const tokenKey = localStorage.getItem('tokenKey');
+    if(!tokenKey)
       this.router.navigate(['/login']);
+   const profiledta:any = localStorage.getItem('loggedinData');
+   this.loginprofile = JSON.parse(profiledta);
     this.profile();
   }
   profile(){
@@ -27,9 +29,9 @@ export class ProfilePage implements OnInit {
     this.langandparmisionService.getUserProfile().subscribe((data: any) => {
       if(data.status == true)
       {
-        setTimeout(() => {
+        
           this.isLoading = false;
-         }, 1);
+  
         this.loginprofile = data.data
       }
        
@@ -37,7 +39,7 @@ export class ProfilePage implements OnInit {
 
   }
   navigateHome() {
-    this.navCtrl.navigateRoot('/home');
+    this.router.navigate(['/home'], { replaceUrl: true });
   }
 
   async openUserModal() {
