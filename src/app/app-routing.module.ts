@@ -53,6 +53,10 @@ const routes: Routes = [
     path: 'youtubelinks',
     loadChildren: () => import('./pages/youtubelinks/youtubelinks.module').then( m => m.YoutubelinksPageModule)
   },
+  {
+    path: 'home-work',
+    loadChildren: () => import('./pages/home-work/home-work.module').then( m => m.HomeWorkPageModule)
+  },
   // Add other protected or unprotected routes below as needed
 ];
 

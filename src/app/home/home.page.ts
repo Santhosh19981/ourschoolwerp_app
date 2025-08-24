@@ -20,7 +20,7 @@ export class HomePage {
   { title: 'Call to Principal', icon: 'call-outline', route: '/call-principal' },
   { title: 'Student Info', icon: 'person-circle-outline', route: '/student-info' },
   { title: 'Attendance', icon: 'checkmark-done-outline', route: '/attendance' },
-  { title: 'Home Work', icon: 'book-outline', route: '/diary' },
+  { title: 'Home Work', icon: 'book-outline', route: '/home-work' },
   { title: 'Exam Schedule', icon: 'calendar-outline', route: '/exam-schedule' },
   { title: 'Exam Marks', icon: 'clipboard-outline', route: '/exam-marks' },
   { title: 'Exam Syllabus', icon: 'document-text-outline', route: '/exam-syllabus' },
@@ -120,6 +120,8 @@ export class HomePage {
     }      
     else if(menu == 'Attendance')
       this.router.navigate(['/attendence']);
+    else if(menu == 'Home Work')
+      this.router.navigate(['/home-work']);
     else if(menu == 'Events')
       this.router.navigate(['/events']);
     else if(menu == 'Apply Leave')
