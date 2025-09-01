@@ -132,6 +132,8 @@ export class HomePage {
       this.router.navigate(['/marks']);
     else if(menu == 'Fees')
       this.router.navigate(['/fee']);
+    else if(menu == 'Pay Fee')
+      this.router.navigate(['/pay-fee']);    
      else if(menu == 'Youtube')
       this.router.navigate(['/youtubelinks']);
      else if(menu == 'Whatsapp')

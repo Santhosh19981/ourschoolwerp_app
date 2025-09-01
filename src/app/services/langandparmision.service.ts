@@ -147,7 +147,17 @@ export class LangandparmisionService {
     }
   }
 
-
+getInvoicePaymentList(invoiceID: any): Observable<any> {
+  const token = localStorage.getItem('tokenKey');
+  if (token) {
+    return this.http.get(ApiEndPoint + 'Invoice/paymentlist/' + invoiceID);
+  } else {
+    return new Observable(observer => {
+      observer.error('No token found');
+      observer.complete();
+    });
+  }
+}
   submitAssignmentAnswer(assignmentID: any, classID: any, payload: FormData): Observable<any> {
   const token = localStorage.getItem('tokenKey');
   if (token) {
@@ -162,7 +172,5 @@ export class LangandparmisionService {
     });
   }
 }
-
-
 
 }

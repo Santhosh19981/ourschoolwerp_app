@@ -57,6 +57,11 @@ const routes: Routes = [
     path: 'home-work',
     loadChildren: () => import('./pages/home-work/home-work.module').then( m => m.HomeWorkPageModule)
   },
+  {
+    path: 'pay-fee',
+    loadChildren: () => import('./pages/fee-pay/fee-pay.module').then( m => m.FeePayPageModule)
+  },
+
   // Add other protected or unprotected routes below as needed
 ];
 
