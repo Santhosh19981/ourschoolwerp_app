@@ -10,6 +10,8 @@ import { LangandparmisionService } from 'src/app/services/langandparmision.servi
    standalone: false,
 })
 export class FeePage implements OnInit {
+  paymentList: any[] = [];
+showPaymentPopup: boolean = false;
   islist:boolean = true;
   isSummary:boolean = false;
   ispayment:boolean = false;
@@ -151,6 +153,32 @@ goBackToList() {
   this.viewMode = 'list';
 }
 
+viewInvoiceList(invoice: any) {
+  this.selectedInvoice = invoice;
+  this.isLoading = true;
 
+  this.apiservice.getInvoicePaymentList(invoice.maininvoiceID).subscribe(
+    (data: any) => {
+      this.isLoading = false;
+      if (data.status === true) {
+        // You can store the payment list in a variable
+        this.paymentList = data.data.paymentlists;
+        console.log('Payment List:', this.paymentList);
 
+        // Optionally, open a modal or set a flag to show popup
+        this.showPaymentPopup = true;
+      } else {
+        console.error('Failed to fetch payment list');
+      }
+    },
+    (error) => {
+      this.isLoading = false;
+      console.error('API Error:', error);
+    }
+  );
+}
+
+  closePaymentPopup() {
+    this.showPaymentPopup = false;
+  }
 }

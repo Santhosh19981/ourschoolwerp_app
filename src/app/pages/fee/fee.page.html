@@ -54,7 +54,8 @@
   <ion-content class="ion-padding">
 
     <!-- List Section -->
-    <div *ngIf="viewMode === 'list'">
+<!-- List Section -->
+<div *ngIf="viewMode === 'list'">
   <ion-card *ngFor="let invoice of invoiceList" class="invoice-card">
     <ion-card-content>
       <strong>{{ invoice.student }}</strong><br />
@@ -80,15 +81,69 @@
         <span><strong>Date:</strong> {{ invoice.date }}</span>
       </div>
 
-      <div class="ion-text-right ion-margin-top">
-        <ion-button size="small" color="primary" fill="outline" (click)="viewInvoice(invoice)">
-          <ion-icon name="eye-outline" slot="start"></ion-icon>
-          View
-        </ion-button>
-      </div>
+     <div class="row" style="display:flex; justify-content:flex-start; gap:10px; flex-wrap:wrap;">
+  <div class="column" style="flex:1; min-width:120px;">
+    <ion-button size="small" color="primary" fill="outline" (click)="viewInvoice(invoice)" style="width:100%;">
+      <ion-icon name="eye-outline" slot="start"></ion-icon>
+      View Invoice
+    </ion-button>
+  </div>
+  <div class="column" style="flex:1; min-width:150px;">
+    <ion-button size="small" color="secondary" fill="outline" (click)="viewInvoiceList(invoice)" style="width:100%;">
+      <ion-icon name="document-text-outline" slot="start"></ion-icon>
+      View Payment List
+    </ion-button>
+  </div>
+</div>
+
     </ion-card-content>
   </ion-card>
+
+  <!-- Popup for Payment List - place this OUTSIDE the ngFor loop -->
+  <div class="overlay" *ngIf="showPaymentPopup">
+    <div class="popup">
+  <div class="popup-header" style="display:flex; justify-content:space-between; align-items:center;">
+  <h2>Payment List for {{ selectedInvoice?.student }}</h2>
+  <ion-button fill="clear" color="dark" (click)="closePaymentPopup()" style="font-size: 24px;">
+    <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+  </ion-button>
 </div>
+
+
+      <div class="popup-content">
+      <div style="width:100%; overflow-x:auto;">
+  <table style="width:100%; border-collapse:collapse; font-size:14px; min-width:300px;">
+    <thead>
+      <tr style="background-color:#f2f2f2; text-align:center;">
+        <th style="padding:6px 8px; min-width:30px;">#</th>
+        <th style="padding:6px 8px; min-width:60px;">Amount</th>
+        <th style="padding:6px 8px; min-width:80px;">Date</th>
+        <th style="padding:6px 8px; min-width:60px;">Type</th>
+        <th style="padding:6px 8px; min-width:60px;">Weaver</th>
+        <th style="padding:6px 8px; min-width:60px;">Fine</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let pay of paymentList; let i = index" style="text-align:center; border-bottom:1px solid #ddd;">
+        <td style="padding:6px 8px;">{{ i + 1 }}</td>
+        <td style="padding:6px 8px;">₹{{ pay.paymentamount }}</td>
+        <td style="padding:6px 8px;">{{ pay.date }}</td>
+        <td style="padding:6px 8px;">{{ pay.paymenttype }}</td>
+        <td style="padding:6px 8px;">₹{{ pay.weaveramount || 0 }}</td>
+        <td style="padding:6px 8px;">₹{{ pay.fineamount || 0 }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+        <ng-template #noPayment>
+          <p>No payment records found.</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+ 
 
 
     <!-- View Section -->
