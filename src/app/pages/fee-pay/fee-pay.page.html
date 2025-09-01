@@ -21,7 +21,7 @@
   <!-- Breadcrumb -->
   <div class="container py-2">
     <div class="d-flex align-items-center justify-content-between mb-1 p-2">
-      <i class="fa fa-arrow-left" style="cursor: pointer;" (click)="navCtrl.back()"></i>
+      <i class="fa fa-arrow-left" style="cursor: pointer;" (click)="back()"></i>
       <div class="d-flex justify-content-center align-items-center flex-grow-1 position-relative">
         <h1 class="m-0 text-center" style="font-size: 20px;">Paid Fees</h1>
       </div>
@@ -33,47 +33,42 @@
 
   <!-- List of invoices -->
   <div *ngIf="!showDetail">
-    <ion-card *ngFor="let invoice of invoiceList" style="margin-bottom:12px;">
-      <ion-card-content>
+    <ion-card *ngFor="let invoice of invoiceList" style="margin-bottom:12px;" class="invoice-card">
+      <ion-card-content style="padding: 13px;">
         <strong>{{ invoice.student }}</strong><br />
        
-        <div class="info-row" style=  "display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-top: 6px;">
-          <span><strong>Class:</strong> {{ invoice.class }}</span>
-          <span><strong>Section:</strong> {{ invoice.section }}</span>
+        <div class="info-row">
+        <span class="text-start"><strong>Class:</strong> {{ invoice.class }}</span>
+        <span class="text-end"><strong>Section:</strong> {{ invoice.section }}</span>
+      </div>
+          <div class="info-row" >
+          <span class="text-start"><strong>Total:</strong> ₹{{ invoice.total }}</span>
+          <span class="text-end"><strong>Balance:</strong> ₹{{ invoice.balance }}</span>
         </div>
-          <div class="info-row" style= " display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-top: 6px;">
-          <span><strong>Total:</strong> ₹{{ invoice.total }}</span>
-          <span><strong>Balance:</strong> ₹{{ invoice.balance }}</span>
-        </div>
-          <div class="info-row" style= " display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-top: 6px;" >
-          <span>
+          <div class="info-row">
+          <span class="text-start">
             <strong>Status:</strong>
-            <ion-badge [color]="getStatusColor(invoice.paidstatus)">
+            <ion-badge [color]="getStatusColor(invoice.paidstatus)" style="    margin-left: 8px;    margin-bottom: -5px;">
               {{ getStatusLabel(invoice.paidstatus) }}
             </ion-badge>
           </span>
-          <span><strong>Date:</strong> {{ invoice.date }}</span>
+          <span class="text-end"><strong>Date:</strong> {{ invoice.date }}</span>
         </div>
-        <ion-button size="small" color="primary" (click)="viewInvoice(invoice)">View</ion-button>
+        <div class="row">
+           <ion-button size="small" color="primary" (click)="viewInvoice(invoice)">View</ion-button>
+        </div>
+       
       </ion-card-content>
     </ion-card>
   </div>
 
   <!-- Full-page invoice detail -->
   <div *ngIf="showDetail && selectedInvoice">
-    <ion-card>
+    
+    <ion-card class="invoice-detail-card m-0">
       <ion-card-header>
       
-        <h2>{{ selectedInvoice.student }}'s Invoice</h2>
+        <strong>{{ selectedInvoice.student }}'s Invoice</strong>
       </ion-card-header>
       <ion-card-content>
        

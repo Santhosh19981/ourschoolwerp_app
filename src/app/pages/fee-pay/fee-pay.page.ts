@@ -108,4 +108,12 @@ export class FeePayPage implements OnInit {
       default: return 'Unknown';
     }
   }
+
+  back(){
+    if(this.showDetail){
+      this.showDetail = false;
+    }else if(!this.showDetail){
+      this.router.navigate(['/home'], { replaceUrl: true });
+    }
+  }
 }

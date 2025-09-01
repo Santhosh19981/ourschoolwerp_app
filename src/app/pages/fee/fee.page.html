@@ -81,17 +81,17 @@
         <span><strong>Date:</strong> {{ invoice.date }}</span>
       </div>
 
-     <div class="row" style="display:flex; justify-content:flex-start; gap:10px; flex-wrap:wrap;">
+     <div class="row" style="display:flex; justify-content:flex-start; gap:10px; flex-wrap:wrap;margin-top: 5px;">
   <div class="column" style="flex:1; min-width:120px;">
     <ion-button size="small" color="primary" fill="outline" (click)="viewInvoice(invoice)" style="width:100%;">
       <ion-icon name="eye-outline" slot="start"></ion-icon>
-      View Invoice
+      View Invoice's
     </ion-button>
   </div>
   <div class="column" style="flex:1; min-width:150px;">
     <ion-button size="small" color="secondary" fill="outline" (click)="viewInvoiceList(invoice)" style="width:100%;">
       <ion-icon name="document-text-outline" slot="start"></ion-icon>
-      View Payment List
+      View Payment's
     </ion-button>
   </div>
 </div>
@@ -100,48 +100,53 @@
   </ion-card>
 
   <!-- Popup for Payment List - place this OUTSIDE the ngFor loop -->
-  <div class="overlay" *ngIf="showPaymentPopup">
-    <div class="popup">
-  <div class="popup-header" style="display:flex; justify-content:space-between; align-items:center;">
-  <h2>Payment List for {{ selectedInvoice?.student }}</h2>
-  <ion-button fill="clear" color="dark" (click)="closePaymentPopup()" style="font-size: 24px;">
-    <ion-icon name="close-outline" slot="icon-only"></ion-icon>
-  </ion-button>
-</div>
+<div class="overlay" *ngIf="showPaymentPopup">
+  <div class="popup">
+    <!-- Header -->
+    <div class="popup-header">
+      <h2 class="popup-title">
+        Payment List for <span>{{ selectedInvoice?.student }}</span>
+      </h2>
+      <ion-button fill="clear" color="light" class="close-btn" (click)="closePaymentPopup()">
+        <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
 
-
-      <div class="popup-content">
+    <!-- Content -->
+    <div class="popup-content">
       <div style="width:100%; overflow-x:auto;">
-  <table style="width:100%; border-collapse:collapse; font-size:14px; min-width:300px;">
-    <thead>
-      <tr style="background-color:#f2f2f2; text-align:center;">
-        <th style="padding:6px 8px; min-width:30px;">#</th>
-        <th style="padding:6px 8px; min-width:60px;">Amount</th>
-        <th style="padding:6px 8px; min-width:80px;">Date</th>
-        <th style="padding:6px 8px; min-width:60px;">Type</th>
-        <th style="padding:6px 8px; min-width:60px;">Weaver</th>
-        <th style="padding:6px 8px; min-width:60px;">Fine</th>
-      </tr>
-    </thead>
-    <tbody>
-       <tr *ngFor="let pay of paymentList; let i = index" style="text-align:center; border-bottom:1px solid #ddd;">
-        <td style="padding:6px 8px;">{{ i + 1 }}</td>
-        <td style="padding:6px 8px;">₹{{ pay.paymentamount }}</td>
-        <td style="padding:6px 8px;">{{ pay.date }}</td>
-        <td style="padding:6px 8px;">{{ pay.paymenttype }}</td>
-        <td style="padding:6px 8px;">₹{{ pay.weaveramount || 0 }}</td>
-        <td style="padding:6px 8px;">₹{{ pay.fineamount || 0 }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-        <ng-template #noPayment>
-          <p>No payment records found.</p>
-        </ng-template>
+        <table class="payment-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Weaver</th>
+              <th>Fine</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pay of paymentList; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>₹{{ pay.paymentamount }}</td>
+              <td>{{ pay.date }}</td>
+              <td>{{ pay.paymenttype }}</td>
+              <td>₹{{ pay.weaveramount || 0 }}</td>
+              <td>₹{{ pay.fineamount || 0 }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <ng-template #noPayment>
+        <p>No payment records found.</p>
+      </ng-template>
     </div>
   </div>
+</div>
+
+
 </div>
  
 

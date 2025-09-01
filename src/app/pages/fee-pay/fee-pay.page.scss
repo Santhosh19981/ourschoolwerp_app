@@ -48,6 +48,17 @@
       text-align: center;
     }
   }
+  .invoice-card {
+  border-left: 4px solid #3880ff;
+  margin: 0px 0px 12px 0px
+}
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
 
   /* Invoice Cards */
   ion-content {
@@ -214,3 +225,26 @@
     }
   }
 }
+
+
+.invoice-detail-card {
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+
+  ion-card-header {
+    background: #3880ff;
+    color: #fff;
+    text-align: center;
+    border-radius: 14px 14px 0 0;
+    padding: 12px;
+    
+    h2 {
+      font-size: 16px;
+      margin: 0;
+    }
+  }
+  p{
+margin-top: 13px;
+}
+}
+
